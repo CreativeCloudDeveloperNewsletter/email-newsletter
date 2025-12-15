@@ -238,6 +238,21 @@ async function main() {
       h1 { margin: 0 0 8px; font-size: 20px; font-weight: 650; }
       p { margin: 0; opacity: 0.85; }
       main { padding: 18px 16px 40px; max-width: 1200px; margin: 0 auto; }
+      .toolbar { display: flex; gap: 10px; align-items: center; margin: 0 0 14px; }
+      .search { flex: 1; min-width: 200px; }
+      .search input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.06);
+        color: inherit;
+        outline: none;
+      }
+      .search input::placeholder { opacity: 0.7; }
+      .search input:focus { border-color: rgba(255,255,255,0.30); background: rgba(255,255,255,0.08); }
+      .count { font-size: 12px; opacity: 0.8; white-space: nowrap; }
       .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
       .card { display: block; text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
       .card:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.08); }
@@ -248,6 +263,8 @@ async function main() {
       @media (prefers-color-scheme: light) {
         body { background: #f6f7fb; color: #12131a; }
         header { border-bottom-color: rgba(0,0,0,0.08); }
+        .search input { border-color: rgba(0,0,0,0.14); background: rgba(0,0,0,0.03); }
+        .search input:focus { border-color: rgba(0,0,0,0.24); background: rgba(0,0,0,0.05); }
         .card { border-color: rgba(0,0,0,0.10); background: rgba(0,0,0,0.03); }
         .card:hover { border-color: rgba(0,0,0,0.20); background: rgba(0,0,0,0.05); }
       }
@@ -259,15 +276,61 @@ async function main() {
       <p>Thumbnails are auto-generated from the top of each HTML newsletter.</p>
     </header>
     <main>
+      <div class="toolbar">
+        <div class="search">
+          <input id="q" type="search" placeholder="Search by title or filename (e.g. 2024, MAX, Sep)" autocomplete="off" />
+        </div>
+        <div id="count" class="count"></div>
+      </div>
       <div id="status" style="margin: 0 0 14px; opacity: 0.85;"></div>
       <div id="grid" class="grid"></div>
     </main>
     <script>
       const statusEl = document.getElementById('status');
       const gridEl = document.getElementById('grid');
+      const qEl = document.getElementById('q');
+      const countEl = document.getElementById('count');
 
       function escapeHtml(s) {
         return String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+      }
+
+      function normalize(s) {
+        return String(s || '').toLowerCase();
+      }
+
+      function renderCards(items) {
+        gridEl.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        for (const m of items) {
+          const a = document.createElement('a');
+          a.className = 'card';
+          a.href = m.file;
+
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = m.thumbnail;
+          img.alt = m.title || m.file;
+
+          const meta = document.createElement('div');
+          meta.className = 'meta';
+
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.textContent = m.title || m.file;
+
+          const file = document.createElement('div');
+          file.className = 'file';
+          file.textContent = m.file;
+
+          meta.appendChild(title);
+          meta.appendChild(file);
+
+          a.appendChild(img);
+          a.appendChild(meta);
+          frag.appendChild(a);
+        }
+        gridEl.appendChild(frag);
       }
 
       async function run() {
@@ -281,37 +344,28 @@ async function main() {
             return;
           }
 
-          statusEl.textContent = manifest.length + ' issues';
-          const frag = document.createDocumentFragment();
-          for (const m of manifest) {
-            const a = document.createElement('a');
-            a.className = 'card';
-            a.href = m.file;
+          statusEl.textContent = '';
 
-            const img = document.createElement('img');
-            img.loading = 'lazy';
-            img.src = m.thumbnail;
-            img.alt = m.title || m.file;
+          const all = manifest.slice();
+          const applyFilter = () => {
+            const q = normalize(qEl.value).trim();
+            const filtered = q
+              ? all.filter((m) => normalize(m.title).includes(q) || normalize(m.file).includes(q))
+              : all;
+            countEl.textContent = filtered.length + ' / ' + all.length;
+            renderCards(filtered);
+          };
 
-            const meta = document.createElement('div');
-            meta.className = 'meta';
+          qEl.addEventListener('input', applyFilter);
+          qEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              qEl.value = '';
+              applyFilter();
+              qEl.blur();
+            }
+          });
 
-            const title = document.createElement('div');
-            title.className = 'title';
-            title.textContent = m.title || m.file;
-
-            const file = document.createElement('div');
-            file.className = 'file';
-            file.textContent = m.file;
-
-            meta.appendChild(title);
-            meta.appendChild(file);
-
-            a.appendChild(img);
-            a.appendChild(meta);
-            frag.appendChild(a);
-          }
-          gridEl.appendChild(frag);
+          applyFilter();
         } catch (err) {
           statusEl.innerHTML = 'Error: <code>' + escapeHtml(err?.message || String(err)) + '</code>';
         }
