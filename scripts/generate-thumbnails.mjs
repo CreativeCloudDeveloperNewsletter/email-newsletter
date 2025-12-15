@@ -71,7 +71,67 @@ async function listHtmlFiles(rootDir, includeList) {
     ? files.filter((f) => includeList.includes(f))
     : files;
 
-  return filtered.sort((a, b) => a.localeCompare(b, 'en', { numeric: true, sensitivity: 'base' }));
+  const monthMap = [
+    ['jan', 1],
+    ['feb', 2],
+    ['mar', 3],
+    ['apr', 4],
+    ['may', 5],
+    ['jun', 6],
+    ['jul', 7],
+    ['aug', 8],
+    ['sep', 9],
+    ['sept', 9],
+    ['oct', 10],
+    ['nov', 11],
+    ['dec', 12]
+  ];
+
+  function parseSortKey(filename) {
+    const base = filename.replace(/\.html$/i, '');
+    const lower = base.toLowerCase();
+    const yearMatch = lower.match(/(19|20)\d{2}(?!\d)/);
+    const year = yearMatch ? Number(yearMatch[0]) : null;
+
+    let month = null;
+    for (const [token, num] of monthMap) {
+      if (lower.includes(token)) {
+        month = num;
+        break;
+      }
+    }
+
+    // Prefer the leading number (often an issue index) as a tiebreaker.
+    const prefixMatch = lower.match(/^(\d{1,3})/);
+    const issue = prefixMatch ? Number(prefixMatch[1]) : null;
+
+    return { year, month, issue, filename };
+  }
+
+  function compareNewestFirst(a, b) {
+    const ka = parseSortKey(a);
+    const kb = parseSortKey(b);
+
+    // Sort dated entries first, newest -> oldest.
+    if (ka.year !== kb.year) {
+      if (ka.year == null) return 1;
+      if (kb.year == null) return -1;
+      return kb.year - ka.year;
+    }
+    if (ka.month !== kb.month) {
+      if (ka.month == null) return 1;
+      if (kb.month == null) return -1;
+      return kb.month - ka.month;
+    }
+    if (ka.issue !== kb.issue) {
+      if (ka.issue == null) return 1;
+      if (kb.issue == null) return -1;
+      return kb.issue - ka.issue;
+    }
+    return a.localeCompare(b, 'en', { numeric: true, sensitivity: 'base' });
+  }
+
+  return filtered.sort(compareNewestFirst);
 }
 
 async function extractTitle(rootDir, htmlFilename) {
@@ -299,6 +359,50 @@ async function main() {
         return String(s || '').toLowerCase();
       }
 
+      function parseSortKey(filename) {
+        const base = String(filename || '').replace(/\.html$/i, '');
+        const lower = base.toLowerCase();
+
+        const yearMatch = lower.match(/(19|20)\\d{2}(?!\\d)/);
+        const year = yearMatch ? Number(yearMatch[0]) : null;
+
+        const monthMap = [
+          ['jan', 1], ['feb', 2], ['mar', 3], ['apr', 4], ['may', 5], ['jun', 6],
+          ['jul', 7], ['aug', 8], ['sep', 9], ['sept', 9], ['oct', 10], ['nov', 11], ['dec', 12]
+        ];
+        let month = null;
+        for (const [token, num] of monthMap) {
+          if (lower.includes(token)) { month = num; break; }
+        }
+
+        const prefixMatch = lower.match(/^(\\d{1,3})/);
+        const issue = prefixMatch ? Number(prefixMatch[1]) : null;
+
+        return { year, month, issue, filename };
+      }
+
+      function compareNewestFirst(a, b) {
+        const ka = parseSortKey(a.file);
+        const kb = parseSortKey(b.file);
+
+        if (ka.year !== kb.year) {
+          if (ka.year == null) return 1;
+          if (kb.year == null) return -1;
+          return kb.year - ka.year;
+        }
+        if (ka.month !== kb.month) {
+          if (ka.month == null) return 1;
+          if (kb.month == null) return -1;
+          return kb.month - ka.month;
+        }
+        if (ka.issue !== kb.issue) {
+          if (ka.issue == null) return 1;
+          if (kb.issue == null) return -1;
+          return kb.issue - ka.issue;
+        }
+        return String(a.file).localeCompare(String(b.file), 'en', { numeric: true, sensitivity: 'base' });
+      }
+
       function renderCards(items) {
         gridEl.innerHTML = '';
         const frag = document.createDocumentFragment();
@@ -346,7 +450,7 @@ async function main() {
 
           statusEl.textContent = '';
 
-          const all = manifest.slice();
+          const all = manifest.slice().sort(compareNewestFirst);
           const applyFilter = () => {
             const q = normalize(qEl.value).trim();
             const filtered = q

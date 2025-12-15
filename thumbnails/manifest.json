@@ -1,3 +1,472 @@
-[]
-
-
+[
+  {
+    "file": "01July2018.html",
+    "title": "Adobe Exchange Program",
+    "thumbnail": "thumbnails/01July2018.png"
+  },
+  {
+    "file": "02Aug2018.html",
+    "title": "Adobe Exchange Program",
+    "thumbnail": "thumbnails/02Aug2018.png"
+  },
+  {
+    "file": "03Sep2018.html",
+    "title": "CEP 9, Exchange News, Packaging Guides, and XD Updates",
+    "thumbnail": "thumbnails/03Sep2018.png"
+  },
+  {
+    "file": "04Oct2018.html",
+    "title": "Adobe XD extensibility has arrived",
+    "thumbnail": "thumbnails/04Oct2018.png"
+  },
+  {
+    "file": "05Nov2018.html",
+    "title": "Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/05Nov2018.png"
+  },
+  {
+    "file": "06Dec2018.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/06Dec2018.png"
+  },
+  {
+    "file": "07Jan2019.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/07Jan2019.png"
+  },
+  {
+    "file": "08Feb2019.html",
+    "title": "Adobe Creative Cloud",
+    "thumbnail": "thumbnails/08Feb2019.png"
+  },
+  {
+    "file": "09Mar2019.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/09Mar2019.png"
+  },
+  {
+    "file": "10Apr2019.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/10Apr2019.png"
+  },
+  {
+    "file": "10March2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/10March2025.png"
+  },
+  {
+    "file": "11may2019.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/11may2019.png"
+  },
+  {
+    "file": "12Jun2019.html",
+    "title": "Adobe Creative Cloud",
+    "thumbnail": "thumbnails/12Jun2019.png"
+  },
+  {
+    "file": "13Jul2019.html",
+    "title": "Adobe Creative Cloud",
+    "thumbnail": "thumbnails/13Jul2019.png"
+  },
+  {
+    "file": "14Aug2019.html",
+    "title": "Adobe Creative Cloud",
+    "thumbnail": "thumbnails/14Aug2019.png"
+  },
+  {
+    "file": "15Sep2019.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/15Sep2019.png"
+  },
+  {
+    "file": "16Oct2019.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/16Oct2019.png"
+  },
+  {
+    "file": "17Nov2019.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/17Nov2019.png"
+  },
+  {
+    "file": "18Dec2019.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/18Dec2019.png"
+  },
+  {
+    "file": "19aJan2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/19aJan2020.png"
+  },
+  {
+    "file": "19Feb2020.html",
+    "title": "19Feb2020",
+    "thumbnail": "thumbnails/19Feb2020.png"
+  },
+  {
+    "file": "20aMarch2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/20aMarch2020.png"
+  },
+  {
+    "file": "20Mar2020.html",
+    "title": "20Mar2020",
+    "thumbnail": "thumbnails/20Mar2020.png"
+  },
+  {
+    "file": "21May2020.html",
+    "title": "21May2020",
+    "thumbnail": "thumbnails/21May2020.png"
+  },
+  {
+    "file": "22June2020.html",
+    "title": "22June2020",
+    "thumbnail": "thumbnails/22June2020.png"
+  },
+  {
+    "file": "23June2020.html",
+    "title": "23June2020",
+    "thumbnail": "thumbnails/23June2020.png"
+  },
+  {
+    "file": "24Jul2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/24Jul2020.png"
+  },
+  {
+    "file": "25Aug2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/25Aug2020.png"
+  },
+  {
+    "file": "26Sep2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/26Sep2020.png"
+  },
+  {
+    "file": "27Oct2020.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/27Oct2020.png"
+  },
+  {
+    "file": "28Nov2020.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/28Nov2020.png"
+  },
+  {
+    "file": "29Dec2020.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/29Dec2020.png"
+  },
+  {
+    "file": "30Jan2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/30Jan2021.png"
+  },
+  {
+    "file": "31Feb2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/31Feb2021.png"
+  },
+  {
+    "file": "32Mar2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/32Mar2021.png"
+  },
+  {
+    "file": "33aMay2021.html",
+    "title": "Adobe Creative Cloud Developer News",
+    "thumbnail": "thumbnails/33aMay2021.png"
+  },
+  {
+    "file": "33Apr2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/33Apr2021.png"
+  },
+  {
+    "file": "34Jun2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/34Jun2021.png"
+  },
+  {
+    "file": "35jun2021.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/35jun2021.png"
+  },
+  {
+    "file": "36junsurvey2021.html",
+    "title": "Photoshop Extensibility Bug Reporting Survey",
+    "thumbnail": "thumbnails/36junsurvey2021.png"
+  },
+  {
+    "file": "37Aug2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/37Aug2021.png"
+  },
+  {
+    "file": "38Oct2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/38Oct2021.png"
+  },
+  {
+    "file": "39Oct2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/39Oct2021.png"
+  },
+  {
+    "file": "40Nov2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/40Nov2021.png"
+  },
+  {
+    "file": "41DecNPS2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/41DecNPS2021.png"
+  },
+  {
+    "file": "42Dec2021.html",
+    "title": "Adobe Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/42Dec2021.png"
+  },
+  {
+    "file": "43Jan2022.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/43Jan2022.png"
+  },
+  {
+    "file": "44Mar2022.html",
+    "title": "Developer Newsletter",
+    "thumbnail": "thumbnails/44Mar2022.png"
+  },
+  {
+    "file": "45Apr2022.html",
+    "title": "Developer Newsletter",
+    "thumbnail": "thumbnails/45Apr2022.png"
+  },
+  {
+    "file": "46May2022.html",
+    "title": "Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/46May2022.png"
+  },
+  {
+    "file": "47Jun2022.html",
+    "title": "Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/47Jun2022.png"
+  },
+  {
+    "file": "48Aug2022.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/48Aug2022.png"
+  },
+  {
+    "file": "49Aug2022.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/49Aug2022.png"
+  },
+  {
+    "file": "50Sept2022.html",
+    "title": "Creative Cloud Developer Newsletter",
+    "thumbnail": "thumbnails/50Sept2022.png"
+  },
+  {
+    "file": "51Oct2022.html",
+    "title": "51Oct2022",
+    "thumbnail": "thumbnails/51Oct2022.png"
+  },
+  {
+    "file": "52Nov2022.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/52Nov2022.png"
+  },
+  {
+    "file": "53Dec2022.html",
+    "title": "Closeout 2022 Developer Roundtable On Dec. 7, Adobe Express Extensibility General Interest Survey, and Plugin\n        Showcases.",
+    "thumbnail": "thumbnails/53Dec2022.png"
+  },
+  {
+    "file": "54Jan2023.html",
+    "title": "Jan 31 Partner &amp; Developer Kickoff, Pixel APIs in Photoshop, Exchange\n        Manifest Validation, and more",
+    "thumbnail": "thumbnails/54Jan2023.png"
+  },
+  {
+    "file": "55Feb2023.html",
+    "title": "Creative Cloud Developer Newsletter, February 2023",
+    "thumbnail": "thumbnails/55Feb2023.png"
+  },
+  {
+    "file": "56Mar2023.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/56Mar2023.png"
+  },
+  {
+    "file": "57Apr2023.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/57Apr2023.png"
+  },
+  {
+    "file": "58May2023.html",
+    "title": "Partner Days, Exchange News, Adobe MAX",
+    "thumbnail": "thumbnails/58May2023.png"
+  },
+  {
+    "file": "59Jun2023.html",
+    "title": "Partner Days, Exchange News, Adobe MAX",
+    "thumbnail": "thumbnails/59Jun2023.png"
+  },
+  {
+    "file": "60Jun2023.html",
+    "title": "Partner Days, Exchange News, Adobe MAX",
+    "thumbnail": "thumbnails/60Jun2023.png"
+  },
+  {
+    "file": "61Jul2023.html",
+    "title": "Upcoming Office Hours,",
+    "thumbnail": "thumbnails/61Jul2023.png"
+  },
+  {
+    "file": "62Aug2023.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/62Aug2023.png"
+  },
+  {
+    "file": "63Sep2023.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/63Sep2023.png"
+  },
+  {
+    "file": "64Oct2023.html",
+    "title": "Live MAX Chat, UXP Developer Tool 2.0, Photoshop C++ SDK Updates",
+    "thumbnail": "thumbnails/64Oct2023.png"
+  },
+  {
+    "file": "65Nov2023.html",
+    "title": "Office Hours, MAX Recap and UXP Type Definitions",
+    "thumbnail": "thumbnails/65Nov2023.png"
+  },
+  {
+    "file": "66Dec2023.html",
+    "title": "Developer Roundtable on Thursday, Adobe Express Document APIs Stable, Join Our LinkedIn Community",
+    "thumbnail": "thumbnails/66Dec2023.png"
+  },
+  {
+    "file": "67Jan2024.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/67Jan2024.png"
+  },
+  {
+    "file": "68Feb2024.html",
+    "title": "February 2024: Adobe Express Document APIs, Creative Cloud Office Hours, Optimizing Discoverability",
+    "thumbnail": "thumbnails/68Feb2024.png"
+  },
+  {
+    "file": "69Mar2024.html",
+    "title": "March 2024: Try Validator for UXP, Office Hours, Add-ons Design Tips",
+    "thumbnail": "thumbnails/69Mar2024.png"
+  },
+  {
+    "file": "70Apr2024.html",
+    "title": "April 2024: Adobe Fund for Design, Office Hours, MAX London, UXP v7.4",
+    "thumbnail": "thumbnails/70Apr2024.png"
+  },
+  {
+    "file": "71May2024.html",
+    "title": "May 2024: Community Feedback, Office Hours, Developers Live 2024, Adobe Fund for Design",
+    "thumbnail": "thumbnails/71May2024.png"
+  },
+  {
+    "file": "72Jun2024.html",
+    "title": "Join our annual developer event",
+    "thumbnail": "thumbnails/72Jun2024.png"
+  },
+  {
+    "file": "73Jul2024.html",
+    "title": "July 2024: InDesign 20 C++ Updates, Express Office Hours, Developers Live Videos",
+    "thumbnail": "thumbnails/73Jul2024.png"
+  },
+  {
+    "file": "74Aug2024.html",
+    "title": "Add-on Marketplace, Office Hours, CEP 12 in PS Beta &amp; Fund for Design",
+    "thumbnail": "thumbnails/74Aug2024.png"
+  },
+  {
+    "file": "75Sep2024.html",
+    "title": "Add-on Marketplace, Office Hours, CEP 12 in PS Beta &amp; Fund for Design",
+    "thumbnail": "thumbnails/75Sep2024.png"
+  },
+  {
+    "file": "76Oct2024.html",
+    "title": "Oct 2024: Adobe MAX announcements &amp; Express Office Hours Wednesday",
+    "thumbnail": "thumbnails/76Oct2024.png"
+  },
+  {
+    "file": "77Nov2024.html",
+    "title": "May 2024: Community Feedback, Office Hours, Developers Live 2024, Adobe Fund for Design",
+    "thumbnail": "thumbnails/77Nov2024.png"
+  },
+  {
+    "file": "78Dec2024.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/78Dec2024.png"
+  },
+  {
+    "file": "79Jan2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/79Jan2025.png"
+  },
+  {
+    "file": "80Feb2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/80Feb2025.png"
+  },
+  {
+    "file": "81March2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/81March2025.png"
+  },
+  {
+    "file": "82April2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/82April2025.png"
+  },
+  {
+    "file": "83April2025_DevLive.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/83April2025_DevLive.png"
+  },
+  {
+    "file": "84May2025.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/84May2025.png"
+  },
+  {
+    "file": "85June2025_NPS.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/85June2025_NPS.png"
+  },
+  {
+    "file": "86June2025_DevLive.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/86June2025_DevLive.png"
+  },
+  {
+    "file": "87June2025_DevLive.html",
+    "title": "Adobe",
+    "thumbnail": "thumbnails/87June2025_DevLive.png"
+  },
+  {
+    "file": "88July2025.html",
+    "title": "Creative Cloud Developer Newsletter, July 2025",
+    "thumbnail": "thumbnails/88July2025.png"
+  },
+  {
+    "file": "89Sept2025.html",
+    "title": "Creative Cloud Developer Newsletter, September 2025",
+    "thumbnail": "thumbnails/89Sept2025.png"
+  },
+  {
+    "file": "EOL_Creative_SDK.html",
+    "title": "Adobe Creative SDK",
+    "thumbnail": "thumbnails/EOL_Creative_SDK.png"
+  }
+]
