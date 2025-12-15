@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creative Cloud Developer Newsletter Archive</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: #0b0c10; color: #f7f7f7; }
+      header { padding: 24px 20px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      h1 { margin: 0 0 8px; font-size: 20px; font-weight: 650; }
+      p { margin: 0; opacity: 0.85; }
+      main { padding: 18px 16px 40px; max-width: 1200px; margin: 0 auto; }
+      .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+      .card { display: block; text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
+      .card:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.08); }
+      img { width: 100%; height: auto; display: block; background: #fff; }
+      .meta { padding: 10px 12px 12px; }
+      .title { font-size: 13px; font-weight: 600; line-height: 1.25; }
+      .file { font-size: 12px; opacity: 0.75; margin-top: 4px; word-break: break-word; }
+      @media (prefers-color-scheme: light) {
+        body { background: #f6f7fb; color: #12131a; }
+        header { border-bottom-color: rgba(0,0,0,0.08); }
+        .card { border-color: rgba(0,0,0,0.10); background: rgba(0,0,0,0.03); }
+        .card:hover { border-color: rgba(0,0,0,0.20); background: rgba(0,0,0,0.05); }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Creative Cloud Developer Newsletter Archive</h1>
+      <p>Thumbnails are auto-generated from the top of each HTML newsletter.</p>
+    </header>
+    <main>
+      <div id="status" style="margin: 0 0 14px; opacity: 0.85;"></div>
+      <div id="grid" class="grid"></div>
+    </main>
+    <script>
+      const statusEl = document.getElementById('status');
+      const gridEl = document.getElementById('grid');
+
+      function escapeHtml(s) {
+        return String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+      }
+
+      async function run() {
+        statusEl.textContent = 'Loading manifest...';
+        try {
+          const res = await fetch('thumbnails/manifest.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed to load manifest: ' + res.status);
+          const manifest = await res.json();
+          if (!Array.isArray(manifest) || manifest.length === 0) {
+            statusEl.innerHTML = 'No entries yet. Generate thumbnails to populate <code>thumbnails/manifest.json</code>.';
+            return;
+          }
+
+          statusEl.textContent = manifest.length + ' issues';
+          const frag = document.createDocumentFragment();
+          for (const m of manifest) {
+            const a = document.createElement('a');
+            a.className = 'card';
+            a.href = m.file;
+
+            const img = document.createElement('img');
+            img.loading = 'lazy';
+            img.src = m.thumbnail;
+            img.alt = m.title || m.file;
+
+            const meta = document.createElement('div');
+            meta.className = 'meta';
+
+            const title = document.createElement('div');
+            title.className = 'title';
+            title.textContent = m.title || m.file;
+
+            const file = document.createElement('div');
+            file.className = 'file';
+            file.textContent = m.file;
+
+            meta.appendChild(title);
+            meta.appendChild(file);
+
+            a.appendChild(img);
+            a.appendChild(meta);
+            frag.appendChild(a);
+          }
+          gridEl.appendChild(frag);
+        } catch (err) {
+          statusEl.innerHTML = 'Error: <code>' + escapeHtml(err?.message || String(err)) + '</code>';
+        }
+      }
+
+      run();
+    </script>
+  </body>
+</html>
+
+
