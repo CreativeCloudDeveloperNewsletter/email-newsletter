@@ -1,4 +1,6 @@
 node_modules/
 .DS_Store
 
-
+# Link-audit files (not part of the archive)
+exchange-footer-links.md
+exchange-footer-links.csv

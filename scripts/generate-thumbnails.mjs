@@ -251,10 +251,14 @@ async function main() {
       });
 
       // Make thumbnails more consistent across years (still faithful to the content).
+      // Hide the shared "Adobe Creative Cloud Developer Newsletter" header graphic so
+      // thumbnails show each issue's actual content instead of the same banner.
       await page.addStyleTag({
         content: `
           * { animation: none !important; transition: none !important; }
           html, body { background: #ffffff !important; }
+          img.mobile-image[alt="Adobe Creative Cloud Developer Newsletter"],
+          img.mobile-image[src*="b12c4efb50f69dbd9bcf1206d277d535"] { display: none !important; visibility: hidden !important; }
         `
       });
 

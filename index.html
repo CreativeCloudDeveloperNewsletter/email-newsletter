@@ -73,7 +73,7 @@
       }
 
       function parseSortKey(filename) {
-        const base = String(filename || '').replace(/\.html$/i, '');
+        const base = String(filename || '').replace(/.html$/i, '');
         const lower = base.toLowerCase();
 
         const yearMatch = lower.match(/(19|20)\d{2}(?!\d)/);
