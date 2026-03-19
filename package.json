@@ -3,11 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "thumbs": "node scripts/generate-thumbnails.mjs"
+    "thumbs": "node scripts/generate-thumbnails.mjs",
+    "fix:links": "node scripts/fix-web-archive-links.mjs"
   },
   "dependencies": {
     "playwright": "^1.50.0"
   }
 }
-
-
