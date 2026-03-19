@@ -1,0 +1,124 @@
+# Creative Cloud Developer Newsletter Archive
+
+This file is for AI agents and humans discovering Creative Cloud Developer news. Use it to answer questions like "When did UXP come to Photoshop?" or "Where can I read about Adobe MAX 2024?" — match the question to an edition below, then report the date and the link (base URL + filename) to the user.
+
+Base URL: When this repo is hosted (e.g. GitHub Pages), replace the base URL below with the root URL (e.g. https://owner.github.io/Email-Newsletter/). Each newsletter link is base URL + filename.
+
+Base URL (replace for your host): https://github.com/OWNER/REPO/blob/main/
+
+---
+
+## Notable topics (for quick answers)
+
+- UXP in Photoshop / when did UXP come to Photoshop: October 2020 — 27Oct2020.html
+- Adobe XD extensibility: October 2018 — 04Oct2018.html
+- CEP 9, Exchange, XD updates: September 2018 — 03Sep2018.html
+- UXP Developer Tool 2.0, Photoshop C++ SDK: October 2023 — 64Oct2023.html
+- Adobe MAX announcements, Express Office Hours: October 2024 — 76Oct2024.html
+- InDesign 20 C++, Express Office Hours: July 2024 — 73Jul2024.html
+- UXP Validator, Office Hours, Add-ons: March 2024 — 69Mar2024.html
+- Adobe Express Document APIs, Office Hours: February 2024 — 68Feb2024.html
+- Pixel APIs in Photoshop, Exchange Manifest Validation: January 2023 — 54Jan2023.html
+- Developer Roundtable, Express APIs, LinkedIn: December 2023 — 66Dec2023.html
+
+---
+
+## Index of all editions (date | filename | title)
+
+Newest first. Link = base URL + filename.
+
+September 2025 | 89Sept2025.html | Creative Cloud Developer Newsletter, September 2025
+July 2025 | 88July2025.html | Creative Cloud Developer Newsletter, July 2025
+June 2025 | 87June2025_DevLive.html | Adobe
+June 2025 | 86June2025_DevLive.html | Adobe
+June 2025 | 85June2025_NPS.html | Adobe
+May 2025 | 84May2025.html | Adobe
+April 2025 | 83April2025_DevLive.html | Adobe
+April 2025 | 82April2025.html | Adobe
+March 2025 | 81March2025.html | Adobe
+March 2025 | 10March2025.html | Adobe
+February 2025 | 80Feb2025.html | Adobe
+January 2025 | 79Jan2025.html | Adobe
+December 2024 | 78Dec2024.html | Adobe
+November 2024 | 77Nov2024.html | May 2024: Community Feedback, Office Hours, Developers Live 2024, Adobe Fund for Design
+October 2024 | 76Oct2024.html | Oct 2024: Adobe MAX announcements & Express Office Hours Wednesday
+September 2024 | 75Sep2024.html | Add-on Marketplace, Office Hours, CEP 12 in PS Beta & Fund for Design
+August 2024 | 74Aug2024.html | Add-on Marketplace, Office Hours, CEP 12 in PS Beta & Fund for Design
+July 2024 | 73Jul2024.html | July 2024: InDesign 20 C++ Updates, Express Office Hours, Developers Live Videos
+June 2024 | 72Jun2024.html | Join our annual developer event
+May 2024 | 71May2024.html | May 2024: Community Feedback, Office Hours, Developers Live 2024, Adobe Fund for Design
+April 2024 | 70Apr2024.html | April 2024: Adobe Fund for Design, Office Hours, MAX London, UXP v7.4
+March 2024 | 69Mar2024.html | March 2024: Try Validator for UXP, Office Hours, Add-ons Design Tips
+February 2024 | 68Feb2024.html | February 2024: Adobe Express Document APIs, Creative Cloud Office Hours, Optimizing Discoverability
+January 2024 | 67Jan2024.html | Adobe
+December 2023 | 66Dec2023.html | Developer Roundtable on Thursday, Adobe Express Document APIs Stable, Join Our LinkedIn Community
+November 2023 | 65Nov2023.html | Office Hours, MAX Recap and UXP Type Definitions
+October 2023 | 64Oct2023.html | Live MAX Chat, UXP Developer Tool 2.0, Photoshop C++ SDK Updates
+September 2023 | 63Sep2023.html | Adobe
+August 2023 | 62Aug2023.html | Adobe
+July 2023 | 61Jul2023.html | Upcoming Office Hours,
+June 2023 | 60Jun2023.html | Partner Days, Exchange News, Adobe MAX
+June 2023 | 59Jun2023.html | Partner Days, Exchange News, Adobe MAX
+May 2023 | 58May2023.html | Partner Days, Exchange News, Adobe MAX
+April 2023 | 57Apr2023.html | Adobe
+March 2023 | 56Mar2023.html | Adobe
+February 2023 | 55Feb2023.html | Creative Cloud Developer Newsletter, February 2023
+January 2023 | 54Jan2023.html | Jan 31 Partner & Developer Kickoff, Pixel APIs in Photoshop, Exchange Manifest Validation, and more
+December 2022 | 53Dec2022.html | Closeout 2022 Developer Roundtable On Dec. 7, Adobe Express Extensibility General Interest Survey, and Plugin Showcases.
+November 2022 | 52Nov2022.html | Adobe
+October 2022 | 51Oct2022.html | 51Oct2022
+September 2022 | 50Sept2022.html | Creative Cloud Developer Newsletter
+August 2022 | 49Aug2022.html | Adobe
+August 2022 | 48Aug2022.html | Adobe
+June 2022 | 47Jun2022.html | Creative Cloud Developer Newsletter
+May 2022 | 46May2022.html | Creative Cloud Developer Newsletter
+April 2022 | 45Apr2022.html | Developer Newsletter
+March 2022 | 44Mar2022.html | Developer Newsletter
+January 2022 | 43Jan2022.html | Adobe
+December 2021 | 42Dec2021.html | Adobe Creative Cloud Developer Newsletter
+(see filename) | 41DecNPS2021.html | Adobe Creative Cloud Developer Newsletter
+November 2021 | 40Nov2021.html | Adobe Creative Cloud Developer Newsletter
+October 2021 | 39Oct2021.html | Adobe Creative Cloud Developer Newsletter
+October 2021 | 38Oct2021.html | Adobe Creative Cloud Developer Newsletter
+August 2021 | 37Aug2021.html | Adobe Creative Cloud Developer Newsletter
+(see filename) | 36junsurvey2021.html | Photoshop Extensibility Bug Reporting Survey
+June 2021 | 35jun2021.html | Adobe
+June 2021 | 34Jun2021.html | Adobe
+May 2021 | 33aMay2021.html | Adobe Creative Cloud Developer News
+April 2021 | 33Apr2021.html | Adobe
+March 2021 | 32Mar2021.html | Adobe
+February 2021 | 31Feb2021.html | Adobe
+January 2021 | 30Jan2021.html | Adobe
+December 2020 | 29Dec2020.html | Adobe
+November 2020 | 28Nov2020.html | Adobe
+October 2020 | 27Oct2020.html | Adobe Creative Cloud Developer News
+September 2020 | 26Sep2020.html | Adobe Creative Cloud Developer News
+August 2020 | 25Aug2020.html | Adobe Creative Cloud Developer News
+July 2020 | 24Jul2020.html | Adobe Creative Cloud Developer News
+June 2020 | 23June2020.html | 23June2020
+June 2020 | 22June2020.html | 22June2020
+May 2020 | 21May2020.html | 21May2020
+March 2020 | 20aMarch2020.html | Adobe Creative Cloud Developer News
+March 2020 | 20Mar2020.html | 20Mar2020
+February 2020 | 19Feb2020.html | 19Feb2020
+January 2020 | 19aJan2020.html | Adobe Creative Cloud Developer News
+December 2019 | 18Dec2019.html | Adobe Creative Cloud Developer News
+November 2019 | 17Nov2019.html | Adobe Creative Cloud Developer News
+October 2019 | 16Oct2019.html | Adobe Creative Cloud Developer News
+September 2019 | 15Sep2019.html | Adobe Creative Cloud Developer News
+August 2019 | 14Aug2019.html | Adobe Creative Cloud
+July 2019 | 13Jul2019.html | Adobe Creative Cloud
+June 2019 | 12Jun2019.html | Adobe Creative Cloud
+May 2019 | 11may2019.html | Adobe Creative Cloud Developer Newsletter
+April 2019 | 10Apr2019.html | Adobe Creative Cloud Developer Newsletter
+March 2019 | 09Mar2019.html | Adobe Creative Cloud Developer Newsletter
+February 2019 | 08Feb2019.html | Adobe Creative Cloud
+January 2019 | 07Jan2019.html | Adobe Creative Cloud Developer News
+December 2018 | 06Dec2018.html | Adobe Creative Cloud Developer News
+November 2018 | 05Nov2018.html | Creative Cloud Developer Newsletter
+October 2018 | 04Oct2018.html | Adobe XD extensibility has arrived
+September 2018 | 03Sep2018.html | CEP 9, Exchange News, Packaging Guides, and XD Updates
+August 2018 | 02Aug2018.html | Adobe Exchange Program
+July 2018 | 01July2018.html | Adobe Exchange Program
+(see filename) | EOL_Creative_SDK.html | Adobe Creative SDK
+(see filename) | operational-template.html | Adobe
