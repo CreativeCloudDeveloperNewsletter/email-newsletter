@@ -264,7 +264,10 @@ async function main() {
           * { animation: none !important; transition: none !important; }
           html, body { background: #ffffff !important; }
           img.mobile-image[alt="Adobe Creative Cloud Developer Newsletter"],
-          img.mobile-image[src*="b12c4efb50f69dbd9bcf1206d277d535"] { display: none !important; visibility: hidden !important; }
+          img.mobile-image[src*="b12c4efb50f69dbd9bcf1206d277d535"],
+          img[class*="mobile-image"][alt="Adobe Creative Cloud Developer Newsletter"],
+          img.x_mobile-image[alt="Adobe Creative Cloud Developer Newsletter"][src*="cosmicimg-prod.services.web.outlook.com/proxy"],
+          img.x_mobile-image[alt="Adobe Creative Cloud Developer Newsletter"][src*="ci3.googleusercontent.com/meips"] { display: none !important; visibility: hidden !important; }
         `
       });
 
@@ -290,7 +293,43 @@ async function main() {
   }
 
   const manifestPath = path.join(outDir, 'manifest.json');
-  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+  let manifestToWrite = manifest;
+  if (args.include?.length) {
+    const byFile = new Map();
+    try {
+      const raw = await fs.readFile(manifestPath, 'utf8');
+      const old = JSON.parse(raw);
+      if (Array.isArray(old)) {
+        for (const m of old) {
+          if (m?.file) byFile.set(m.file, m);
+        }
+      }
+    } catch {
+      /* no prior manifest */
+    }
+    for (const m of manifest) {
+      if (m?.file) byFile.set(m.file, m);
+    }
+    const allOrder = await listHtmlFiles(rootDir, null);
+    for (const f of allOrder) {
+      if (!byFile.has(f)) {
+        const base = f.replace(/\.html$/i, '');
+        const thumbRel = path.posix.join(args.outDir, `${base}.png`);
+        const thumbAbs = path.join(rootDir, thumbRel);
+        const st = await fs.stat(thumbAbs).catch(() => null);
+        if (st?.isFile()) {
+          byFile.set(f, { file: f, title: await extractTitle(rootDir, f), thumbnail: thumbRel });
+        }
+      }
+    }
+    manifestToWrite = allOrder.map((f) => byFile.get(f)).filter(Boolean);
+    if (manifestToWrite.length !== allOrder.length) {
+      console.warn(
+        `Merged manifest: ${manifestToWrite.length}/${allOrder.length} entries (run full thumbs if issues are missing).`
+      );
+    }
+  }
+  await fs.writeFile(manifestPath, JSON.stringify(manifestToWrite, null, 2) + '\n', 'utf8');
 
   // Generate a simple GitHub Pages index gallery at repo root (reads the manifest at runtime).
   const indexPath = path.join(rootDir, 'index.html');
