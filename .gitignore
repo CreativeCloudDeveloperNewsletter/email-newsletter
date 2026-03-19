@@ -4,3 +4,8 @@ node_modules/
 # Link-audit files (not part of the archive)
 exchange-footer-links.md
 exchange-footer-links.csv
+
+# Local/template HTML (not newsletter issues)
+adobe-apo-template.html
+exchange-footer.html
+operational-template.html

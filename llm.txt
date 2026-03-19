@@ -121,4 +121,3 @@ September 2018 | 03Sep2018.html | CEP 9, Exchange News, Packaging Guides, and XD
 August 2018 | 02Aug2018.html | Adobe Exchange Program
 July 2018 | 01July2018.html | Adobe Exchange Program
 (see filename) | EOL_Creative_SDK.html | Adobe Creative SDK
-(see filename) | operational-template.html | Adobe

@@ -465,23 +465,8 @@
     "thumbnail": "thumbnails/01July2018.png"
   },
   {
-    "file": "adobe-apo-template.html",
-    "title": "Adobe",
-    "thumbnail": "thumbnails/adobe-apo-template.png"
-  },
-  {
     "file": "EOL_Creative_SDK.html",
     "title": "Adobe Creative SDK",
     "thumbnail": "thumbnails/EOL_Creative_SDK.png"
-  },
-  {
-    "file": "exchange-footer.html",
-    "title": "exchange-footer",
-    "thumbnail": "thumbnails/exchange-footer.png"
-  },
-  {
-    "file": "operational-template.html",
-    "title": "Adobe",
-    "thumbnail": "thumbnails/operational-template.png"
   }
 ]

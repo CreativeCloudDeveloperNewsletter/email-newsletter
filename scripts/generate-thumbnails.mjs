@@ -11,6 +11,11 @@ const __dirname = path.dirname(__filename);
 const DEFAULT_VIEWPORT = { width: 1200, height: 900 };
 const DEFAULT_CLIP = { x: 0, y: 0, width: 1200, height: 700 };
 
+// HTML files that are not newsletter issues — never thumbnail or list in the gallery.
+const EXCLUDED_FROM_GALLERY = new Set(
+  ['adobe-apo-template.html', 'exchange-footer.html', 'operational-template.html'].map((n) => n.toLowerCase())
+);
+
 function parseArgs(argv) {
   const args = {
     root: process.cwd(),
@@ -65,10 +70,11 @@ async function listHtmlFiles(rootDir, includeList) {
     .filter((e) => e.isFile())
     .map((e) => e.name)
     .filter((name) => name.toLowerCase().endsWith('.html'))
-    .filter((name) => name.toLowerCase() !== 'index.html');
+    .filter((name) => name.toLowerCase() !== 'index.html')
+    .filter((name) => !EXCLUDED_FROM_GALLERY.has(name.toLowerCase()));
 
   const filtered = includeList?.length
-    ? files.filter((f) => includeList.includes(f))
+    ? files.filter((f) => includeList.includes(f) && !EXCLUDED_FROM_GALLERY.has(f.toLowerCase()))
     : files;
 
   const monthMap = [
