@@ -23,7 +23,8 @@ function parseArgs(argv) {
     clip: { ...DEFAULT_CLIP },
     viewport: { ...DEFAULT_VIEWPORT },
     timeoutMs: 60_000,
-    include: null
+    include: null,
+    onlyBroken: false
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -39,6 +40,8 @@ function parseArgs(argv) {
       if (Number.isFinite(w) && Number.isFinite(h)) args.clip = { ...args.clip, width: w, height: h };
     } else if (token === '--include') {
       args.include = (argv[++i] ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+    } else if (token === '--onlyBroken') {
+      args.onlyBroken = true;
     } else if (token === '--help' || token === '-h') {
       return { ...args, help: true };
     }
@@ -209,7 +212,8 @@ Options:
   --viewport <WxH>       Viewport (default: 1200x900)
   --clip <WxH>           Screenshot clip size starting from 0,0 (default: 1200x700)
   --timeoutMs <ms>       Per-page timeout (default: 60000)
-  --include <a,b,c.html> Only render these exact filenames
+  --include <a,b,c.html> Only render these exact filenames; merges into existing manifest.json
+  --onlyBroken           Only regenerate pages with broken image loads
   --help                 Show help
 `.trim();
 }
@@ -241,9 +245,22 @@ async function main() {
   const page = await context.newPage();
 
   const manifest = [];
+  const brokenImageReport = [];
+  let failedImageUrls = new Set();
+
+  page.on('requestfailed', (request) => {
+    if (request.resourceType() === 'image') failedImageUrls.add(request.url());
+  });
+  page.on('response', (response) => {
+    const request = response.request();
+    if (request.resourceType() === 'image' && response.status() >= 400) {
+      failedImageUrls.add(response.url());
+    }
+  });
 
   try {
     for (const file of htmlFiles) {
+      failedImageUrls = new Set();
       const url = `${baseUrl}/${encodeURIComponent(file)}`;
       const basename = file.replace(/\.html$/i, '');
       const thumbRel = path.posix.join(args.outDir, `${basename}.png`);
@@ -273,12 +290,43 @@ async function main() {
 
       await page.waitForTimeout(350);
 
+      const brokenDomImages = await page.evaluate(() => {
+        const broken = [];
+        for (const img of Array.from(document.images)) {
+          const src = img.currentSrc || img.src || '';
+          if (!img.complete || img.naturalWidth === 0) {
+            if (src) broken.push(src);
+            img.style.setProperty('display', 'none', 'important');
+            img.style.setProperty('visibility', 'hidden', 'important');
+          }
+        }
+        return broken;
+      });
+
+      const brokenUrls = Array.from(new Set([...failedImageUrls, ...brokenDomImages]));
+      if (brokenUrls.length > 0) {
+        // eslint-disable-next-line no-console
+        console.log(`  Broken images detected: ${brokenUrls.length}`);
+        brokenImageReport.push({ file, brokenImages: brokenUrls });
+      }
+
+      const title = await extractTitle(rootDir, file);
+      if (args.onlyBroken && brokenUrls.length === 0) {
+        // eslint-disable-next-line no-console
+        console.log('  No broken images; keeping existing thumbnail.');
+        manifest.push({
+          file,
+          title,
+          thumbnail: thumbRel
+        });
+        continue;
+      }
+
       await page.screenshot({
         path: thumbAbs,
         clip: args.clip
       });
 
-      const title = await extractTitle(rootDir, file);
       manifest.push({
         file,
         title,
@@ -324,12 +372,15 @@ async function main() {
     }
     manifestToWrite = allOrder.map((f) => byFile.get(f)).filter(Boolean);
     if (manifestToWrite.length !== allOrder.length) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Merged manifest: ${manifestToWrite.length}/${allOrder.length} entries (run full thumbs if issues are missing).`
       );
     }
   }
   await fs.writeFile(manifestPath, JSON.stringify(manifestToWrite, null, 2) + '\n', 'utf8');
+  const brokenReportPath = path.join(outDir, 'broken-images.json');
+  await fs.writeFile(brokenReportPath, JSON.stringify(brokenImageReport, null, 2) + '\n', 'utf8');
 
   // Generate a simple GitHub Pages index gallery at repo root (reads the manifest at runtime).
   const indexPath = path.join(rootDir, 'index.html');
@@ -459,6 +510,8 @@ async function main() {
           const a = document.createElement('a');
           a.className = 'card';
           a.href = m.file;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
 
           const img = document.createElement('img');
           img.loading = 'lazy';
@@ -534,6 +587,8 @@ async function main() {
 
   // eslint-disable-next-line no-console
   console.log(`\nWrote ${manifestPath}`);
+  // eslint-disable-next-line no-console
+  console.log(`Wrote ${brokenReportPath}`);
   // eslint-disable-next-line no-console
   console.log(`Wrote ${indexPath}`);
 }

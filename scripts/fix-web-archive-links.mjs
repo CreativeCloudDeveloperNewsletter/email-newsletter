@@ -6,6 +6,9 @@
  * - Remove contenteditable="true" / data-contenteditable="true" from any element (td/strong
  *   wrappers otherwise swallow clicks).
  * - Trim leading whitespace in href after the opening quote (e.g. href=" https://...").
+ * - Fix Gmail/client garbage like ` "="" class="` that breaks <a> parsing.
+ * - Promote data-nl-lnkep-perso-attr-href into href when href is # or empty (Adobe Campaign
+ *   personalization placeholders), then strip the data attribute.
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -19,6 +22,98 @@ const SKIP = new Set(
     s.toLowerCase()
   )
 );
+
+function parseOpeningTagEnd(html, start) {
+  let j = start;
+  let inQ = null;
+  const n = html.length;
+  while (j < n) {
+    const c = html[j];
+    if (inQ) {
+      if (c === inQ) inQ = null;
+    } else if (c === '"' || c === "'") {
+      inQ = c;
+    } else if (c === '>') {
+      return j + 1;
+    }
+    j += 1;
+  }
+  return null;
+}
+
+function findNextRealA(html, pos) {
+  const n = html.length;
+  while (pos < n) {
+    const i = html.indexOf('<a', pos);
+    if (i === -1) return -1;
+    const nxt = i + 2;
+    if (nxt >= n) return i;
+    const c = html[nxt];
+    if (' \t\n\r/>'.includes(c)) return i;
+    if (
+      html.startsWith('<abbr', i) ||
+      html.startsWith('<address', i) ||
+      html.startsWith('<article', i) ||
+      html.startsWith('<aside', i)
+    ) {
+      pos = i + 2;
+      continue;
+    }
+    pos = i + 1;
+  }
+  return -1;
+}
+
+function mapAOpenTags(html, fn) {
+  let out = '';
+  let i = 0;
+  while (true) {
+    const start = findNextRealA(html, i);
+    if (start === -1) {
+      out += html.slice(i);
+      break;
+    }
+    out += html.slice(i, start);
+    const end = parseOpeningTagEnd(html, start);
+    if (end === null) {
+      out += html.slice(start);
+      break;
+    }
+    const tag = html.slice(start, end);
+    out += fn(tag);
+    i = end;
+  }
+  return out;
+}
+
+function fixPersoDataOnAOpenTag(tag) {
+  const dataD = /data-nl-lnkep-perso-attr-href\s*=\s*"([^"]*)"/i;
+  const dataS = /data-nl-lnkep-perso-attr-href\s*=\s*'([^']*)'/i;
+  const dm = tag.match(dataD) || tag.match(dataS);
+  let t = tag;
+  if (dm) {
+    const rawUrl = dm[1].trim();
+    const decoded = rawUrl.replace(/&amp;/g, '&').trim();
+    if (decoded && decoded !== '#') {
+      if (/\bhref\s*=\s*"#"/i.test(t)) t = t.replace(/\bhref\s*=\s*"#"/i, `href="${rawUrl}"`);
+      else if (/\bhref\s*=\s*'#'/i.test(t)) t = t.replace(/\bhref\s*=\s*'#'/i, `href="${rawUrl}"`);
+      else if (/\bhref\s*=\s*""/i.test(t)) t = t.replace(/\bhref\s*=\s*""/i, `href="${rawUrl}"`);
+      else if (/\bhref\s*=\s*''/i.test(t)) t = t.replace(/\bhref\s*=\s*''/i, `href="${rawUrl}"`);
+    }
+  }
+  t = t.replace(/\s*data-nl-lnkep-perso-attr-href\s*=\s*"[^"]*"/gi, '');
+  t = t.replace(/\s*data-nl-lnkep-perso-attr-href\s*=\s*'[^']*'/gi, '');
+  t = t.replace(/\s{2,}/g, ' ');
+  t = t.replace(/ </g, '<');
+  return t;
+}
+
+function fixGmailGarbage(html) {
+  return html
+    .replace(/\s+"=""\s+class="/g, ' class="')
+    .replace(/\s+"=""\s*>/g, '>')
+    .replace(/\s+"=""\s+/g, ' ');
+}
 
 function fixBodyOpenTag(html) {
   return html.replace(/<body\b([^>]*)>/i, (full, attrs) => {
@@ -72,6 +167,8 @@ async function main() {
     let after = fixBodyOpenTag(before);
     after = stripGlobalEditableAttrs(after);
     after = fixHrefLeadingSpace(after);
+    after = fixGmailGarbage(after);
+    after = mapAOpenTags(after, fixPersoDataOnAOpenTag);
     if (after !== before) {
       await fs.writeFile(fp, after, 'utf8');
       updated += 1;
