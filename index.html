@@ -123,6 +123,8 @@
           const a = document.createElement('a');
           a.className = 'card';
           a.href = m.file;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
 
           const img = document.createElement('img');
           img.loading = 'lazy';
