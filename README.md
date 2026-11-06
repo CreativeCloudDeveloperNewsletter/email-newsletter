@@ -8,6 +8,28 @@ A browsable archive of Adobe Creative Cloud Developer newsletters. The repo cont
 - **index.html** – Gallery page that lists all newsletters with thumbnails and a search box. It loads the list from `thumbnails/manifest.json`.
 - **thumbnails/** – Generated PNG thumbnails and `manifest.json`. Produced by the thumbnail script (see below).
 - **scripts/generate-thumbnails.mjs** – Script that builds the thumbnails and rewrites `index.html` and `thumbnails/manifest.json`.
+- **[llms.txt](llms.txt)** – AI-friendly archive navigation, topic starting points, and guidance on historical sources and uncertain dates.
+
+## Searchability and discoverability roadmap
+
+The archive includes all emails sent to the developer newsletter list, including surveys, event invitations, and operational announcements. Keep the original HTML as historical evidence and generate discovery views from it and shared metadata.
+
+| Addition | What it enables | Tracking |
+| --- | --- | --- |
+| One authoritative metadata record per email | Accurate subjects, confirmed or approximate send dates, products, topics, message types, and permanent URLs without relying on filenames. | [#2](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/2) |
+| Full-text search with excerpts | Find terms in email bodies, see why a result matched, and link directly to the relevant section. | [#5](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/5) |
+| Date, product, topic, and message-type filters | Browse related announcements across years while keeping newsletters, surveys, and promotions in the same archive. | [#5](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/5) |
+| Readable text views and stable section links | Navigate semantic headings, paragraphs, and lists, with precise citations and links to the original email layout. | [#4](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/4) |
+| Static, linked archive indexes | Discover every email through ordinary HTML links without JavaScript, including year and topic browsing. | [#3](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/3) |
+| Standard web-discovery metadata | Unique titles and descriptions, canonical URLs, an XML sitemap, appropriate structured data, and documented crawler settings. | [#6](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/6) |
+| Generated Markdown and JSON exports | Retrieve clean text and structured metadata without processing email presentation markup or maintaining competing copies manually. | [#4](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/4) |
+| Shared generation and validation | Keep discovery outputs synchronized and update metadata/text without recapturing unchanged screenshots. | [#7](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/7) |
+
+Suggested priority: accurate metadata, then full-text search, static links and sitemap, and section-level text/Markdown exports. Share a controlled topic vocabulary and aliases such as UDT / UXP Developer Tool; related technologies such as CEP and UXP are not synonyms. A vector database or chatbot is not required for this archive.
+
+The published [llms.txt](https://creativeclouddevelopernewsletter.github.io/email-newsletter/llms.txt) provides navigation and historical-source guidance, not full-text search or verified metadata for every email. It is supplementary guidance, not a guarantee of search indexing or AI citations. Keep email send dates, event dates, and archive update dates distinct, and label uncertainty rather than inventing exact dates.
+
+Review `llms.txt` when adding emails or changing linked filenames. It is currently maintained manually; the thumbnail workflow does not regenerate it. The older `llm.txt` catalog is legacy, and `scripts/update-llm-txt.mjs` still writes that older file rather than `llms.txt`; migration is tracked in [#7](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues/7).
 
 ## Preview locally
 
