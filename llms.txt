@@ -1,0 +1,40 @@
+# Creative Cloud Developer Newsletter Archive
+
+> A historical archive of emails sent to the Adobe Creative Cloud developer newsletter list, including newsletters, surveys, event invitations, and operational announcements. Topics include Adobe Express add-ons, UXP, CEP, Creative Cloud application APIs, developer tools, marketplaces, and developer events.
+
+Published archive: https://creativeclouddevelopernewsletter.github.io/email-newsletter/
+
+The original archived HTML emails are the primary sources. Read the relevant email before answering, cite its published URL, and distinguish an announcement's historical context from current product behavior or policy. Finding a mention here does not establish that it was the first announcement or that it is still current.
+
+Filenames, HTML titles, and gallery captions are not authoritative send-date or subject metadata: some are approximate, generic, copied, or incorrect. Prefer dates and subjects supported by the email's content or confirmed source evidence. Do not interpret a leading issue number as a day of the month, invent an exact date from a month, or confuse an event date with an email's send date. Multiple emails in the same month are separate archive entries.
+
+Clean per-email Markdown and full-text search are not yet available. Follow the HTML links below for substantive content. The gallery requires JavaScript and currently searches titles and filenames, not email bodies. Its generated inventory can lag newly recovered HTML files. Use this llms.txt rather than the older llm.txt catalog.
+
+## Archive navigation
+
+- [Archive gallery](https://creativeclouddevelopernewsletter.github.io/email-newsletter/): Human-facing thumbnail gallery with title and filename search.
+- [Gallery file inventory](https://creativeclouddevelopernewsletter.github.io/email-newsletter/thumbnails/manifest.json): JSON records containing file, title, and thumbnail paths. Resolve relative paths against the published archive URL, not the thumbnails directory. Titles may be generic or stale; this is not a verified subject/date catalog.
+- [Repository README](https://raw.githubusercontent.com/CreativeCloudDeveloperNewsletter/email-newsletter/main/README.md): Archive structure, local preview, and thumbnail-generation instructions.
+
+## Topic starting points
+
+- [UXP comes to Photoshop](https://creativeclouddevelopernewsletter.github.io/email-newsletter/27Oct2020.html): Historical announcement of UXP in Photoshop.
+- [Adobe XD plugin APIs](https://creativeclouddevelopernewsletter.github.io/email-newsletter/04Oct2018.html): Launch announcement and extensibility resources.
+- [UXP scripting, Webview, and C++ updates](https://creativeclouddevelopernewsletter.github.io/email-newsletter/45Apr2022.html): Photoshop and UXP platform updates.
+- [UXP Developer Tool 2.0 and Photoshop C++ integration](https://creativeclouddevelopernewsletter.github.io/email-newsletter/64Oct2023.html): Code playground and Photoshop Connection SDK discussion.
+- [InDesign C++ SDK updates](https://creativeclouddevelopernewsletter.github.io/email-newsletter/73Jul2024.html): Planned InDesign 20.0 changes and developer resources.
+- [Adobe Express Document APIs](https://creativeclouddevelopernewsletter.github.io/email-newsletter/68Feb2024.html): API news, developer office hours, and add-on discoverability.
+- [VSCode UXP Validator](https://creativeclouddevelopernewsletter.github.io/email-newsletter/69Mar2024.html): Validator introduction, office hours, and Adobe Express add-on design tips.
+- [Photoshop Pixel APIs and Exchange manifest validation](https://creativeclouddevelopernewsletter.github.io/email-newsletter/54Jan2023.html): Developer kickoff and platform announcements.
+- [Developer roundtable and Adobe Express APIs](https://creativeclouddevelopernewsletter.github.io/email-newsletter/66Dec2023.html): Community discussion, Document APIs, and LinkedIn community.
+- [MAX deadlines and Premiere Pro New World scripting](https://creativeclouddevelopernewsletter.github.io/email-newsletter/16Oct2019.html): Recovered October 2019 email, also covering XD, CEP, and ExtendScript Toolkit.
+
+## Confirmed May 2025 messages
+
+- [Express Add-on API Updates, Join Us Live, ExtendScript Debugger, and More](https://creativeclouddevelopernewsletter.github.io/email-newsletter/84May2025.html): Sent May 12, 2025.
+- [Adobe Developers Live 2025 - Speaker Highlights](https://creativeclouddevelopernewsletter.github.io/email-newsletter/84aMay2025_DevLive.html): Sent May 27, 2025. A separately recovered event email, not a replacement for the May 12 newsletter.
+
+## Optional
+
+- [Source repository](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter): Source HTML files, generated gallery assets, and development scripts. Repository history is not proof of an email's original send date.
+- [Open archive improvement issues](https://github.com/CreativeCloudDeveloperNewsletter/email-newsletter/issues): Work tracking for metadata, search, readable exports, and discoverability.
